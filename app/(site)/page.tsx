@@ -35,10 +35,20 @@ export default function Home() {
           mt-4
           "
           >
-            <ListItem img={""} name={""} href={""}></ListItem>
+            <ListItem
+              img="/images/liked.png"
+              name="Liked Songs"
+              href="Liked"
+            ></ListItem>
           </div>
         </div>
       </Header>
+      <div className="mt-40 mb-7 px-6">
+        <div className="flex justify-between items-center">
+          <h1 className=" text-white text-2xl font-semibold">Newest Songs</h1>
+        </div>
+        <div>List Songs</div>
+      </div>
     </div>
   );
 }
