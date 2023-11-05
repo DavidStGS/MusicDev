@@ -52,7 +52,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           gap-y-2 
           bg-black 
           h-full 
-          w-[300px] 
+          w-[332px] 
           p-2
         "
       >
