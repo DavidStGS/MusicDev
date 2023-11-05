@@ -1,10 +1,12 @@
 "use client";
 
-import Modal from "@/components/Modal";
+import AuthModal from "@/components/AuthModal";
+import UploadModalComp from "@/components/UploadModa";
 import { useEffect, useState } from "react";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -15,14 +17,8 @@ const ModalProvider = () => {
 
   return (
     <>
-      <Modal
-        title="Test Modal"
-        description="Test Description"
-        isOpen
-        onChance={() => {}}
-      >
-        Hola
-      </Modal>
+      <AuthModal />
+      <UploadModalComp />
     </>
   );
 };

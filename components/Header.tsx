@@ -6,15 +6,35 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import Button from "./Button";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useEffect } from "react";
+import { Session } from "inspector";
+import {
+  useSessionContext,
+  useSupabaseClient,
+} from "@supabase/auth-helpers-react";
+import { useUser } from "@/hooks/useUsers";
+import { FaUserAlt } from "react-icons/fa";
+
 interface HeaderProps {
   children: React.ReactNode;
   className?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
+  const AuthModal = useAuthModal();
   const router = useRouter();
 
-  const handleLogout = () => {};
+  const supabaseClient = useSupabaseClient();
+  const { user } = useUser();
+
+  const handleLogout = async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    router.refresh();
+    if (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="">
@@ -23,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           `
         h-20
         bg-gradient-to-b
-        from-purple-500
+        from-purple-700
         p-6
     `,
           className
@@ -35,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         flex
         justify-between
         items-center
-        -mt-2
+        -mt-3
         "
         >
           <div
@@ -100,34 +120,69 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             items-center
         "
           >
-            <>
-              <div>
+            {user ? (
+              <div
+                className="
+                flex
+                gap-x-4
+                items-center
+              "
+              >
                 <Button
-                  onClick={() => {}}
+                  onClick={handleLogout}
                   className="
+                  bg-black
+                    px-6
+                    py-3
+                    text-white
+                    border-transparent
+                "
+                >
+                  Logout
+                </Button>
+                <Button
+                  onClick={() => router.push("/account")}
+                  className="
+                  border-transparent
+                  bg-black
+                "
+                >
+                  <FaUserAlt className="text-white " />
+                </Button>
+              </div>
+            ) : (
+              <>
+                <div>
+                  <Button
+                    onClick={AuthModal.onOpen}
+                    className="
                 border-transparent
-                bg-trasnparent
-              text-neutral-300
+                bg-black
+              text-white
                 font-medium
+                px-6
+                      py-3
               "
-                >
-                  Sign Up
-                </Button>
-              </div>
-              <div>
-                <Button
-                  onClick={() => {}}
-                  className="
-                border-transparent
-              bg-white
-              px-6
-              py-2
-              "
-                >
-                  Log In
-                </Button>
-              </div>
-            </>
+                  >
+                    Sign Up
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    onClick={AuthModal.onOpen}
+                    className="
+                      border-transparent
+                    bg-black
+                      px-6
+                      py-3
+                      text-white
+                      "
+                  >
+                    Log In
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         </div>
         {children}
