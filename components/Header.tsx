@@ -7,14 +7,10 @@ import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import Button from "./Button";
 import useAuthModal from "@/hooks/useAuthModal";
-import { useEffect } from "react";
-import { Session } from "inspector";
-import {
-  useSessionContext,
-  useSupabaseClient,
-} from "@supabase/auth-helpers-react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUsers";
 import { FaUserAlt } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -32,7 +28,9 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
     if (error) {
-      console.error(error);
+      toast.error(error.message);
+    } else {
+      toast.success("Logout successful");
     }
   };
 
@@ -156,12 +154,11 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                   <Button
                     onClick={AuthModal.onOpen}
                     className="
-                border-transparent
-                bg-black
-              text-white
-                font-medium
-                px-6
+                      border-transparent
+                    bg-black
+                      px-6
                       py-3
+                      text-white
               "
                   >
                     Sign Up
