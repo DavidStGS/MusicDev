@@ -36,11 +36,11 @@ export default function Home() {
           
           "
           >
-            <ListItem
+            {/* <ListItem
               img="/images/liked.png"
               name="Liked Songs"
               href="Liked"
-            ></ListItem>
+            ></ListItem> */}
           </div>
         </div>
       </Header>
