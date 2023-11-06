@@ -1,9 +1,13 @@
 "use client";
+import Input from "@/components/Input";
 import useUploadModal from "@/hooks/useUploadModal";
 import Modal from "./Modal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
 
 const UploadModalComp = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const uploadModal = useUploadModal();
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
       author: "",
@@ -12,7 +16,6 @@ const UploadModalComp = () => {
       image: null,
     },
   });
-  const uploadModal = useUploadModal();
 
   const onChange = (open: boolean) => {
     if (!open) {
@@ -29,8 +32,14 @@ const UploadModalComp = () => {
       isOpen={uploadModal.isOpen}
       onChange={onChange}
     >
-      <form onClick={handleSubmit(onSubmit)}></form>
-      Upload Content
+      <form onClick={handleSubmit(onSubmit)}>
+        <Input
+          id="title"
+          disabled={isLoading}
+          {...register("title", { required: true })}
+          placeholder="Song title"
+        />
+      </form>
     </Modal>
   );
 };
