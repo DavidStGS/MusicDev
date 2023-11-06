@@ -129,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 <Button
                   onClick={handleLogout}
                   className="
-                  bg-black
+                  bg-[#0a0a0a]
                     px-6
                     py-3
                     text-white
@@ -142,7 +142,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                   onClick={() => router.push("/account")}
                   className="
                   border-transparent
-                  bg-black
+                  bg-[#0a0a0a]
                 "
                 >
                   <FaUserAlt className="text-white " />
@@ -155,10 +155,12 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                     onClick={AuthModal.onOpen}
                     className="
                       border-transparent
-                    bg-black
+                      bg-transparent
                       px-6
                       py-3
-                      text-white
+                     text-neutral-100
+                      hover:scale-105
+                      transition
               "
                   >
                     Sign Up
@@ -169,10 +171,12 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                     onClick={AuthModal.onOpen}
                     className="
                       border-transparent
-                    bg-black
-                      px-6
+                    bg-[#0a0a0a]
+                      px-7
                       py-3
                       text-white
+                      hover:text-[#ffffff]
+                      hover:scale-105
                       "
                   >
                     Log In

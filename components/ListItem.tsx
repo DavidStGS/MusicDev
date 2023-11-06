@@ -42,13 +42,13 @@ const ListItem: React.FC<ListItemProps> = ({ img, name, href }) => {
       <div
         className="
             absolute
-            trasition
+            transition
             opacity-0
             rounded-full
             flex
             items-center
             justify-center
-            bg-green-500
+            bg-purple-500
             p-4
             drop-shadow-md
             right-5
