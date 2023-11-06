@@ -74,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             align-center
             justify-center
             hover:opacity-75
-            trasition
+            transition
           "
             >
               <RxCaretLeft className="text-white" size={35}></RxCaretLeft>
@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             align-center
             justify-center
             hover:opacity-75
-            trasition
+            transition
           "
             >
               <RxCaretRight className="text-white " size={35}></RxCaretRight>
@@ -98,13 +98,13 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           <div className="flex md:hidden gap-x-2 items-center">
             <button
               className="rounded-full bg-white p-2 items-center hover:opacity-75
-            trasition"
+              transition"
             >
               <HiHome className="text-black" size={23}></HiHome>
             </button>
             <button
               className="rounded-full bg-white p-2 items-center hover:opacity-75
-            trasition"
+              transition"
             >
               <BiSearch className="text-black" size={23}></BiSearch>
             </button>
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           <div
             className="
             flex
-            justify-bewteen
+            justify-between
             gap-x-4
             items-center
         "

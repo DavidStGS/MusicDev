@@ -14,12 +14,13 @@ export default function Home() {
       "
     >
       <Header>
-        <div className="mb-4 mt-5">
+        <div className="mt-7">
           <h1
             className="
             text-white
               text-3xl
               font-semibold
+              mb-7
             "
           >
             Welcome Again
@@ -32,7 +33,7 @@ export default function Home() {
           xl:grid-cols-3
           2xl:grid-cols-4
           gap 4
-          mt-4
+          
           "
           >
             <ListItem

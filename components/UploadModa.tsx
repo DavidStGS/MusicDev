@@ -20,7 +20,7 @@ const UploadModalComp = () => {
       uploadModal.onClose();
     }
   };
-  const onSubmit: SubmitHandler<FieldValues> = async(values) => {};
+  const onSubmit: SubmitHandler<FieldValues> = async (values) => {};
 
   return (
     <Modal
