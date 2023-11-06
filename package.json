@@ -23,6 +23,7 @@
     "stripe": "^14.3.0",
     "supabase": "^1.110.1",
     "tailwind-merge": "^2.0.0",
+    "uniqid": "^5.4.0",
     "zustand": "^4.3.8"
   },
   "devDependencies": {

@@ -2,12 +2,22 @@
 import Input from "@/components/Input";
 import useUploadModal from "@/hooks/useUploadModal";
 import Modal from "./Modal";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
 import { useState } from "react";
+import Button from "./Button";
+import toast from "react-hot-toast";
+import { useUser } from "@/hooks/useUsers";
+import uniqid from "uniqid";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useRouter } from "next/navigation";
 
 const UploadModalComp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const uploadModal = useUploadModal();
+  const { user } = useUser();
+  const router = useRouter();
+  const supabaseClient = useSupabaseClient();
+
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
       author: "",
@@ -23,7 +33,68 @@ const UploadModalComp = () => {
       uploadModal.onClose();
     }
   };
-  const onSubmit: SubmitHandler<FieldValues> = async (values) => {};
+  const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+    try {
+      setIsLoading(true);
+      const imageFile = values.image?.[0];
+
+      const songFile = values.song?.[0];
+
+      if (!imageFile || !songFile || !user) {
+        toast.error("Please select an image and a song");
+        setIsLoading(false);
+        return;
+      }
+
+      const uniqID = uniqid();
+
+      const { data: songData, error: songError } = await supabaseClient.storage
+        .from("songs")
+        .upload(`song/${values.title}-${uniqID}`, songFile, {
+          cacheControl: "3600",
+          upsert: false,
+        });
+
+      if (songError) {
+        setIsLoading(false);
+        return toast.error("Filed to upload song.");
+      }
+
+      const { data: imageData, error: imageError } =
+        await supabaseClient.storage
+          .from("images")
+          .upload(`image/${values.title}-${uniqID}`, imageFile, {
+            cacheControl: "3600",
+            upsert: false,
+          });
+      if (imageError) {
+        setIsLoading(false);
+        return toast.error("Filed to upload image.");
+      }
+      const { error: supabaseError } = await supabaseClient
+        .from("songs")
+        .insert({
+          user_id: user.id,
+          title: values.title,
+          author: values.author,
+          song_url: songData?.path,
+          image_url: imageData?.path,
+        });
+
+      if (supabaseError) {
+        setIsLoading(false);
+        return toast.error(supabaseError.message);
+      }
+      router.refresh();
+      setIsLoading(false);
+      toast.success("Song created successfully");
+      reset();
+      uploadModal.onClose();
+    } catch (error) {
+      toast.error("Something went wrong");
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Modal
@@ -32,7 +103,7 @@ const UploadModalComp = () => {
       isOpen={uploadModal.isOpen}
       onChange={onChange}
     >
-      <form onClick={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
         <Input
           id="title"
           disabled={isLoading}
@@ -45,15 +116,35 @@ const UploadModalComp = () => {
           {...register("author", { required: true })}
           placeholder="Song author"
         />
-        <div className="pb-1">Select a song file</div>
-        <Input
-          id="song"
-          type="file"
-          disabled={isLoading}
-          accept=".mp3"
-          {...register("song", { required: true })}
-          placeholder="Song author"
-        />
+        <div>
+          <div className="pb-1">Select a song file</div>
+          <Input
+            id="song"
+            type="file"
+            disabled={isLoading}
+            accept=".mp3"
+            {...register("song", { required: true })}
+          />
+        </div>
+        <div className="pb-2">
+          <div className="pb-1">Select an image</div>
+          <Input
+            id="image"
+            type="file"
+            disabled={isLoading}
+            accept="image/*"
+            {...register("image", { required: true })}
+          />
+        </div>
+        <div className="pb-2">
+          <Button
+            className="text-white px-3 py-2 "
+            disabled={isLoading}
+            type="submit"
+          >
+            Create
+          </Button>
+        </div>
       </form>
     </Modal>
   );
