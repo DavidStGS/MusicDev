@@ -33,15 +33,15 @@ const UploadModalComp = () => {
       uploadModal.onClose();
     }
   };
+
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
     try {
       setIsLoading(true);
       const imageFile = values.image?.[0];
-
       const songFile = values.song?.[0];
 
       if (!imageFile || !songFile || !user) {
-        toast.error("Please select an image and a song");
+        toast.error("Please Select An Image and a Song");
         setIsLoading(false);
         return;
       }
@@ -57,7 +57,7 @@ const UploadModalComp = () => {
 
       if (songError) {
         setIsLoading(false);
-        return toast.error("Filed to upload song.");
+        return toast.error("Filed to Upload Song.");
       }
 
       const { data: imageData, error: imageError } =
@@ -69,7 +69,7 @@ const UploadModalComp = () => {
           });
       if (imageError) {
         setIsLoading(false);
-        return toast.error("Filed to upload image.");
+        return toast.error("Filed to Upload Image.");
       }
       const { error: supabaseError } = await supabaseClient
         .from("songs")
@@ -77,8 +77,8 @@ const UploadModalComp = () => {
           user_id: user.id,
           title: values.title,
           author: values.author,
-          song_url: songData?.path,
-          image_url: imageData?.path,
+          song_path: songData.path,
+          image_path: imageData.path,
         });
 
       if (supabaseError) {
@@ -87,19 +87,19 @@ const UploadModalComp = () => {
       }
       router.refresh();
       setIsLoading(false);
-      toast.success("Song created successfully");
+      toast.success("Song Created Successfully");
       reset();
       uploadModal.onClose();
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Something Went Wrong");
       setIsLoading(false);
     }
   };
 
   return (
     <Modal
-      title="Add a song"
-      description="Upload an mp3 file"
+      title="Share Your Music"
+      description="Upload Your Sounds"
       isOpen={uploadModal.isOpen}
       onChange={onChange}
     >
