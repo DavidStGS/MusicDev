@@ -12,7 +12,9 @@ const getSongs = async ():Promise<Song[]> => {
     .select('*')
     .order('created_at', { ascending: false });
 
-    if (error) throw error;
+    if (error) {
+        console.log(error.message);
+      }
     return (data as Song[]) || [];
 } 
 export default getSongs;
