@@ -1,7 +1,7 @@
 import getSongs from "@/actions/getSongs";
-import GetSongsComponent from "@/components/GetSongsComponent";
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
+import PageContent from "./component/PageContent";
 
 export const revalidate = 0;
 
@@ -56,7 +56,7 @@ export default async function Home() {
           <h1 className=" text-white text-2xl font-semibold">Newest Songs</h1>
         </div>
         <div>
-          <GetSongsComponent songs={songs} />
+          <PageContent songs={songs} />
         </div>
       </div>
     </div>

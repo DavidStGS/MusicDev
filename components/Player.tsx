@@ -3,6 +3,7 @@
 import getSongsByUserId from "@/hooks/useGetSongsById";
 import useLoadSongUrl from "@/hooks/useLoadSongUrl";
 import usePlayer from "@/hooks/usePlayer";
+import PlayerContent from "./PlayerContent";
 
 const Player = () => {
   const play = usePlayer();
@@ -25,7 +26,7 @@ const Player = () => {
         px-4
     "
     >
-      <div>Hola Soy un reproducer</div>
+      <PlayerContent key={songUrl} song={songs} songUrl={songUrl} />
     </div>
   );
 };
