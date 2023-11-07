@@ -75,6 +75,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             justify-center
             hover:opacity-75
             transition
+            hover:scale-105
           "
             >
               <RxCaretLeft className="text-white" size={35}></RxCaretLeft>
@@ -89,6 +90,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             justify-center
             hover:opacity-75
             transition
+            hover:scale-105
           "
             >
               <RxCaretRight className="text-white " size={35}></RxCaretRight>
@@ -97,16 +99,16 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           <style jsx>{``}</style>
           <div className="flex md:hidden gap-x-2 items-center">
             <button
-              className="rounded-full bg-white p-2 items-center hover:opacity-75
+              className="rounded-full bg-black p-2 items-center hover:opacity-75 hover:scale-105
               transition"
             >
-              <HiHome className="text-black" size={23}></HiHome>
+              <HiHome className="text-white" size={23}></HiHome>
             </button>
             <button
-              className="rounded-full bg-white p-2 items-center hover:opacity-75
+              className="rounded-full bg-black p-2 items-center hover:opacity-75 hover:scale-105
               transition"
             >
-              <BiSearch className="text-black" size={23}></BiSearch>
+              <BiSearch className="text-white" size={23}></BiSearch>
             </button>
           </div>
 
@@ -134,6 +136,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                     py-3
                     text-white
                     border-transparent
+                    hover:scale-105
                 "
                 >
                   Logout
@@ -143,6 +146,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                   className="
                   border-transparent
                   bg-[#0a0a0a]
+                  hover:scale-105
                 "
                 >
                   <FaUserAlt className="text-white " />
