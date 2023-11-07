@@ -10,7 +10,8 @@ export default async function Home() {
 
   return (
     <div
-      className="        
+      className="      
+        
       bg-neutral-900 
       rounded-lg 
       h-full 
@@ -19,7 +20,7 @@ export default async function Home() {
       overflow-y-auto
       "
     >
-      <Header>
+      <Header className="from-bg-neutral">
         <div className="mt-7">
           <h1
             className="
