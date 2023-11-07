@@ -96,15 +96,16 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
               <RxCaretRight className="text-white " size={35}></RxCaretRight>
             </button>
           </div>
-          <style jsx>{``}</style>
           <div className="flex md:hidden gap-x-2 items-center">
             <button
+              onClick={() => router.push("/")}
               className="rounded-full bg-black p-2 items-center hover:opacity-75 hover:scale-105
               transition"
             >
               <HiHome className="text-white" size={23}></HiHome>
             </button>
             <button
+              onClick={() => router.push("/search")}
               className="rounded-full bg-black p-2 items-center hover:opacity-75 hover:scale-105
               transition"
             >
