@@ -73,10 +73,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
           "
         >
           {songs.map((item) => (
-            <MediaItem onClick={() => {}}
-            key={item.id}
-            data={item}
-             />
+            <MediaItem onClick={() => {}} key={item.id} data={item} />
           ))}
         </div>
       </div>
