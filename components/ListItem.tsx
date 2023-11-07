@@ -36,7 +36,17 @@ const ListItem: React.FC<ListItemProps> = ({ img, name, href }) => {
             min-h-[64px]
             min-w-[64px]"
       >
-        <Image className="objet-cover" fill src={img} alt="Image" />
+        <Image
+          priority
+          fetchPriority="high"
+          decoding="async"
+          quality={75}
+          className="objet-cover"
+          fill
+          sizes="100%"
+          src={img}
+          alt="Image"
+        />
       </div>
       <p className="truncate font-medium py-5">{name}</p>
       <div

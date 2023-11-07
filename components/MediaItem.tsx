@@ -33,27 +33,27 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
         className="
         relative
         rounded-md
-        w-[47px]
-        h-[47px]
+        w-[45px]
+        h-[45px]
         overflow-hidden
 
       "
       >
         <Image
+          priority
+          fetchPriority="high"
+          decoding="async"
+          quality={75}
           fill
+          sizes="100%"
           src={imageUrl || ""}
           alt=""
           className="object-cover"
         ></Image>
       </div>
-      <div
-        className="
-          flex 
-          flex-col 
-          overflow-hidden"
-      >
+      <div className="flex flex-col gap-y-1 overflow-hidden">
         <p className="text-white truncate">{data.title}</p>
-        <p className="text-neutral-400 text-sm truncate">{data.author}</p>
+        <p className="text-neutral-400 text-sm truncate">By {data.author}</p>
       </div>
     </div>
   );

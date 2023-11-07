@@ -1,6 +1,7 @@
 import getSongs from "@/actions/getSongs";
 import GetSongsComponent from "@/components/GetSongsComponent";
 import Header from "@/components/Header";
+import ListItem from "@/components/ListItem";
 
 export const revalidate = 0;
 
@@ -41,11 +42,11 @@ export default async function Home() {
           
           "
           >
-            {/* <ListItem
+            <ListItem
               img="/images/liked.png"
               name="Liked Songs"
               href="Liked"
-            ></ListItem> */}
+            ></ListItem>
           </div>
         </div>
       </Header>
@@ -54,7 +55,7 @@ export default async function Home() {
           <h1 className=" text-white text-2xl font-semibold">Newest Songs</h1>
         </div>
         <div>
-          <GetSongsComponent songs={songs}/>
+          <GetSongsComponent songs={songs} />
         </div>
       </div>
     </div>
