@@ -40,7 +40,8 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
       "
       >
         <Image
-          priority={true}
+          priority
+          decoding="async"
           fetchPriority="high"
           quality={75}
           fill
