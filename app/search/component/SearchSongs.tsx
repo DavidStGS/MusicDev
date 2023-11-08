@@ -14,7 +14,7 @@ const SearchSongs: React.FC<SearchSongsProps> = ({ songs }) => {
     return (
       <div
         className="
-                ml-5
+                ml-6
                 flex
                 flex-col
                 w-full
