@@ -20,7 +20,7 @@ const Player = () => {
       className="
         fixed 
         bottom-0 
-        bg-zinc-950 
+        bg-zinc-950
         w-full
         h-[80px] 
         px-3
