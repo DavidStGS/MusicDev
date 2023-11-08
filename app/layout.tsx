@@ -8,9 +8,7 @@ import ModalProvider from "@/providers/ModalProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import getSongsByUserId from "@/actions/getSongsByUserID";
 import Player from "@/components/Player";
-
 const font = Figtree({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Spotify Clone",
   description: "One of the best music streaming app",
@@ -25,6 +23,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <link rel="manifest" href="./manifest.json" />
       <body className={font.className}>
         <ToasterProvider />
         <SupabaseProvider>
