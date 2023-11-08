@@ -58,7 +58,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
       onPlayNext();
     },
     onpause: () => setIsPlaying(false),
-    format: ["mp3, flac"],
+    format: ["mp3", "flac"],
   });
 
   useEffect(() => {
