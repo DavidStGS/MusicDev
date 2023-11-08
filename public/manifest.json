@@ -6,14 +6,19 @@
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
-    "theme_color": "#00000",
-    "background_color": "#00000",
+    "theme_color": "black",
+    "background_color": "#171717",
     "orientation": "vertical - Horizontal",
     "icons": [
         {
           "src": "/images/liked.png",
           "sizes": "any",
           "type": "image/png"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "any",
+            "type": "image/svg"
         }
       ]
 }
