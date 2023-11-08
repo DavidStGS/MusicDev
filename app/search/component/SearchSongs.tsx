@@ -32,7 +32,7 @@ const SearchSongs: React.FC<SearchSongsProps> = ({ songs }) => {
       flex 
       flex-col 
       w-full
-      px-4
+      px-5
     "
     >
       {songs.map((song) => (
