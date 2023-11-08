@@ -23,7 +23,7 @@ const Player = () => {
         bg-zinc-950
         w-full
         h-[80px] 
-        px-4
+        px-3
 
       "
     >
