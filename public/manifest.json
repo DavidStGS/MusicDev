@@ -1,0 +1,19 @@
+{
+    "name": "MusicDev",
+    "lang": "en-us",
+    "short_name": "MusicDev",
+    "description": "A sample PWA for testing purposes",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "orientation": "vertical - Horizontal",
+    "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "any",
+          "type": "image/x-icon"
+        }
+      ]
+}

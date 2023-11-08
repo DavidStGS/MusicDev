@@ -10,8 +10,13 @@ import getSongsByUserId from "@/actions/getSongsByUserID";
 import Player from "@/components/Player";
 const font = Figtree({ subsets: ["latin"] });
 export const metadata: Metadata = {
-  title: "Spotify Clone",
+  title: "MusicDev",
   description: "One of the best music streaming app",
+  manifest: "/manifest.json",
+  icons: {
+    apple: "/favicon.ico",
+  },
+  themeColor: "#000000",
 };
 export const revalidate = 0;
 export default async function RootLayout({
@@ -23,7 +28,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <link rel="manifest" href="./manifest.json" />
       <body className={font.className}>
         <ToasterProvider />
         <SupabaseProvider>
