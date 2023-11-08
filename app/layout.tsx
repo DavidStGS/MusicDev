@@ -9,6 +9,7 @@ import ToasterProvider from "@/providers/ToasterProvider";
 import getSongsByUserId from "@/actions/getSongsByUserID";
 import Player from "@/components/Player";
 const font = Figtree({ subsets: ["latin"] });
+//Acá esta el manifest.json que se usa para la instalación de la app en el celular y el favicon.ico
 export const metadata: Metadata = {
   title: "MusicDev",
   description: "One of the best music streaming app",
