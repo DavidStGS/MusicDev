@@ -21,6 +21,7 @@ const Search = async ({ searchParams }: SearchProps) => {
         w-full 
         overflow-hidden 
         overflow-y-auto
+        
       "
     >
       <Header className="pb-1">

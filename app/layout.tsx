@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   icons: {
     apple: "/favicon.ico",
   },
-  themeColor: "#000000",
 };
 export const revalidate = 0;
 export default async function RootLayout({

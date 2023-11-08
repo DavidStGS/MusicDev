@@ -16,18 +16,18 @@ const Player = () => {
   }
 
   return (
-    <div
-      className="
-        fixed 
+    <div className="md:fixed w-full">
+      <div
+        className="
         bottom-0 
         bg-zinc-950
         w-full
         h-[80px] 
-        px-3
-
+        px-1
       "
-    >
-      <PlayerContent key={songUrl} song={songs} songUrl={songUrl} />
+      >
+        <PlayerContent key={songUrl} song={songs} songUrl={songUrl} />
+      </div>
     </div>
   );
 };
