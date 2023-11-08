@@ -1,6 +1,6 @@
 import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
-import ListItem from "@/components/ListItem";
+// import ListItem from "@/components/ListItem";
 import PageContent from "./component/PageContent";
 
 export const revalidate = 0;
@@ -20,14 +20,13 @@ export default async function Home() {
       overflow-y-auto
       "
     >
-      <Header className="from-bg-neutral">
+      <Header>
         <div className="mt-7">
           <h1
             className="
             text-white
-              text-3xl
-              font-semibold
-              mb-7
+              text-4xl
+              font-bold
             "
           >
             Welcome Again
@@ -43,15 +42,15 @@ export default async function Home() {
           
           "
           >
-            <ListItem
+            {/* <ListItem
               img="/images/liked.png"
               name="Liked Songs"
               href="Liked"
-            ></ListItem>
+            ></ListItem> */}
           </div>
         </div>
       </Header>
-      <div className="mt-40 mb-7 px-6">
+      <div className="mt-34 px-6">
         <div className="flex justify-between items-center">
           <h1 className=" text-white text-2xl font-semibold">Newest Songs</h1>
         </div>

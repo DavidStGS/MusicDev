@@ -117,7 +117,7 @@ const UploadModalComp = () => {
           placeholder="Song author"
         />
         <div>
-          <div className="pb-1">Select a song file</div>
+          <div className="pb-1">Select a song mp3</div>
           <Input
             id="song"
             type="file"
@@ -127,7 +127,7 @@ const UploadModalComp = () => {
           />
         </div>
         <div className="pb-2">
-          <div className="pb-1">Select an image</div>
+          <div className="pb-1">Select an image jpeg</div>
           <Input
             id="image"
             type="file"

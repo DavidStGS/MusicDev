@@ -16,9 +16,7 @@ const SearchSongs: React.FC<SearchSongsProps> = ({ songs }) => {
         className="
                 flex
                 flex-col
-                py-40
                 w-full
-                px-6
                 text-neutral-400
             "
       >
@@ -31,9 +29,8 @@ const SearchSongs: React.FC<SearchSongsProps> = ({ songs }) => {
       className="
       flex 
       flex-col 
-      py-40
       w-full
-      px-6
+      px-4
     "
     >
       {songs.map((song) => (

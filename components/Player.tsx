@@ -1,33 +1,35 @@
 "use client";
 
-import getSongsByUserId from "@/hooks/useGetSongsById";
-import useLoadSongUrl from "@/hooks/useLoadSongUrl";
 import usePlayer from "@/hooks/usePlayer";
+import useLoadSongUrl from "@/hooks/useLoadSongUrl";
+import useGetSongById from "@/hooks/useGetSongsById";
 import PlayerContent from "./PlayerContent";
 
 const Player = () => {
-  const play = usePlayer();
-  const { songs } = getSongsByUserId(play.activateId);
+  const player = usePlayer();
+  const { songs } = useGetSongById(player.activedId);
 
   const songUrl = useLoadSongUrl(songs!);
 
-  if (!songs || !songUrl || !play.activateId) return null;
+  if (!songs || !songUrl || !player.activedId) {
+    return null;
+  }
 
-  const handlePlay = () => {};
   return (
     <div
       className="
-        fixed
-        bottom-0
-        bg-black
+        fixed 
+        bottom-0 
+        bg-zinc-950 
         w-full
-        py-2
-        h-[80px]
-        px-4
-    "
+        h-[80px] 
+        px-3
+
+      "
     >
       <PlayerContent key={songUrl} song={songs} songUrl={songUrl} />
     </div>
   );
 };
+
 export default Player;

@@ -1,20 +1,19 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-interface PlaterProps{
-    ids: string[];
-    activateId?: string;
-    setId: (id: string) => void;
-    setIds: (ids: string[]) => void;
-    reset: () => void; 
+interface PlayerStore {
+  ids: string[];
+  activedId?: string;
+  setId: (id: string) => void;
+  setIds: (ids: string[]) => void;
+  reset: () => void;
 }
 
-// create a custom hook to manage the player state
-const usePlayer = create<PlaterProps>((set  ) => ({
-    ids: [],
-    activateId: undefined,
-    setId: (id: string) => set({activateId: id}),
-    setIds: (ids: string[]) => set({ids: ids}),
-    reset: () => set({ids: [], activateId: undefined})         
-}))
+const usePlayer = create<PlayerStore>((set) => ({
+  ids: [],
+  activeId: undefined,
+  setId: (id: string) => set({ activedId: id }),
+  setIds: (ids: string[]) => set({ ids }),
+  reset: () => set({ ids: [], activedId: undefined })
+}));
 
 export default usePlayer;
