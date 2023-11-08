@@ -122,7 +122,7 @@ const UploadModalComp = () => {
             id="song"
             type="file"
             disabled={isLoading}
-            accept=".mp3, .flac"
+            accept=".mp3"
             {...register("song", { required: true })}
           />
         </div>
