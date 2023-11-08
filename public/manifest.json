@@ -11,9 +11,9 @@
     "orientation": "vertical - Horizontal",
     "icons": [
         {
-          "src": "/favicon.ico",
+          "src": "/images/liked.png",
           "sizes": "any",
-          "type": "image/x-icon"
+          "type": "image/png"
         }
       ]
 }
