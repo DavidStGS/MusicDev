@@ -5,10 +5,10 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'MusicDev',
     short_name: 'MusicDev',
     description: 'MusicDev',
-    start_url: '/',
+    start_url: '/', 
     display: 'standalone',
-    background_color: '#00000',
-    theme_color: '#00000',
+    background_color: '#171717',
+    theme_color: '#171717',
     icons: [
       {
         src: '/favicon.ico',
