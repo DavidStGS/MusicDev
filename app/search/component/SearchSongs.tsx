@@ -19,6 +19,7 @@ const SearchSongs: React.FC<SearchSongsProps> = ({ songs }) => {
                 flex-col
                 w-full
                 text-neutral-400
+                text-1xl
             "
       >
         No songs found.
