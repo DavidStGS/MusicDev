@@ -1,4 +1,6 @@
 "use client";
+// se movio onMouseEnter={() => setIsTrackActive(true)}
+// onMouseLeave={() => setIsTrackActive(false)}
 
 import * as RadixSlider from "@radix-ui/react-slider";
 import { useState } from "react";
