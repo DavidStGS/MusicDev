@@ -11,6 +11,7 @@ import usePlayer from "@/hooks/usePlayer";
 
 import MediaItem from "./MediaItem";
 import Slider from "./Slider";
+import ProgressBar from "./ProgressBar";
 
 interface PlayerContentProps {
   song: Song;
@@ -21,6 +22,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const player = usePlayer();
   const [volume, setVolume] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
@@ -40,6 +42,12 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     player.setId(nextSong);
   };
 
+  function handleProgressChange(newValue) {
+    if (sound) {
+      sound.seek(newValue * sound.duration());
+    }
+  }
+
   const onPlayPrevious = () => {
     if (player.ids.length === 0) {
       return;
@@ -57,6 +65,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
 
   const [play, { pause, sound }] = useSound(songUrl, {
     volume: volume,
+    isPlaying: isPlaying,
     onplay: () => setIsPlaying(true),
     onend: () => {
       setIsPlaying(false);
@@ -90,14 +99,40 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     }
   };
 
+  useEffect(() => {
+    if (sound) {
+      const interval = setInterval(() => {
+        setProgress(sound.seek() / sound.duration());
+      });
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [sound]);
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
+      <div className="absolute md:flex w-full mt-12 justify-center">
+        <div
+          className="   
+          hidden
+          md:flex
+          md:mt-1     
+          justify-between 
+          items-center     
+          w-2/5
+          mx-5
+          "
+        >
+          <ProgressBar value={progress} onChange={handleProgressChange} />
+        </div>
+      </div>
       <div className="flex w-full justify-start">
         <div className="flex items-center gap-x-4">
           <MediaItem data={song} />
         </div>
       </div>
-
       <div
         className="
             flex 
@@ -122,66 +157,71 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
               cursor-pointer
             "
         >
-          <Icon size={30} className="text-black" />
+          <Icon size={20} className="text-black" />
         </div>
       </div>
 
       <div
         className="
+            pt-2
             hidden
             h-full
             md:flex 
             justify-center 
-            items-center 
+            items-top 
             w-full 
             max-w-[722px] 
-            gap-x-6
+            gap-x-5
           "
       >
-        <AiFillStepBackward
-          onClick={onPlayPrevious}
-          size={30}
-          className="
+        <div className="mt-1">
+          <AiFillStepBackward
+            onClick={onPlayPrevious}
+            size={25}
+            className="
               text-neutral-400 
               cursor-pointer 
               hover:text-white 
               transition
             "
-        />
+          />
+        </div>
         <div
           onClick={handlePlay}
-          className="
+          className="         
               flex 
               items-center 
               justify-center
-              h-10
-              w-10 
+              h-8
+              w-8 
               rounded-full 
               bg-white 
               p-1 
               cursor-pointer
             "
         >
-          <Icon size={30} className="text-black" />
+          <Icon size={25} className="text-black" />
         </div>
-        <AiFillStepForward
-          onClick={onPlayNext}
-          size={30}
-          className="
+        <div className="mt-1">
+          <AiFillStepForward
+            onClick={onPlayNext}
+            size={25}
+            className="
               text-neutral-400 
               cursor-pointer 
               hover:text-white 
               transition
             "
-        />
+          />
+        </div>
       </div>
 
-      <div className="hidden md:flex w-full justify-end pr-2">
+      <div className="hidden md:flex w-full justify-end pr-4">
         <div className="flex items-center gap-x-2 w-[120px]">
           <VolumeIcon
             onClick={toggleMute}
             className="cursor-pointer"
-            size={34}
+            size={28}
           />
           <Slider value={volume} onChange={(value) => setVolume(value)} />
         </div>

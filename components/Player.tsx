@@ -16,13 +16,12 @@ const Player = () => {
   }
 
   return (
-    <div className="md:fixed w-full">
+    <div className="fixed w-full bottom-0 ">
       <div
         className="
-        bottom-0 
         bg-zinc-950
         w-full
-        h-[80px] 
+        h-[75px] 
         px-1
       "
       >
