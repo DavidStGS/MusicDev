@@ -62,7 +62,6 @@ const Sidebar = ({ children, songs }: SidebarProps) => {
           p-2
         "
       >
-        //Caja donde esta los logos para acceder a la musica
         <Box>
           <div className="flex flex-col gap-y-4 px-5 py-4">
             {routes.map((item) => (
