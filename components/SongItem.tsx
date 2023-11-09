@@ -52,7 +52,7 @@ const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
         <Image
           className="object-cover	border
           border-none"
-          src={imagePath || "/images/music-placeholder.png"}
+          src={imagePath || ""}
           fill
           sizes="100%"
           alt="Image"

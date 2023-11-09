@@ -13,49 +13,66 @@ const ProgressBar: React.FC<SlideProps> = ({ value = 0, onChange }) => {
   const handleChange = (newValue: number[]) => {
     onChange?.(newValue[0]);
   };
+  const handleWrapperClick = (event) => {
+    const clickPositionInPage = event.pageX;
+    const wrapper = event.currentTarget;
+    const wrapperStart = wrapper.getBoundingClientRect().left + window.scrollX;
+    const wrapperWidth = wrapper.offsetWidth;
+    const clickPositionInWrapper = clickPositionInPage - wrapperStart;
+    const timePerPixel = 1 / wrapperWidth;
+    const clickPositionInTime = timePerPixel * clickPositionInWrapper;
 
+    handleChange([clickPositionInTime]);
+  };
   return (
-    <RadixSlider.Root
+    <div
+      className="relative flex items-center w-full h-4 cursor-pointer"
+      onClick={handleWrapperClick}
       onMouseEnter={() => setIsTrackActive(true)}
       onMouseLeave={() => setIsTrackActive(false)}
-      className="
-        relative 
-        flex 
-        items-center 
-        select-none 
-        touch-none 
-        w-full 
-        h-1
-        cursor-pointer
-        focus:outline-none
-      "
-      defaultValue={[0]}
-      value={[value]}
-      onValueChange={handleChange}
-      max={1}
-      step={0.01}
-      aria-label="Progress"
     >
-      <RadixSlider.Track
+      <RadixSlider.Root
         className="
+      absolute 
+      top-1/2 
+      transform 
+      -translate-y-1/2
+      flex 
+      items-center 
+      select-none 
+      touch-none 
+      w-full 
+      h-1
+      cursor-pointer
+      focus:outline-none
+      "
+        defaultValue={[0]}
+        value={[value]}
+        onValueChange={handleChange}
+        max={1}
+        step={0.01}
+        aria-label="Progress"
+      >
+        <RadixSlider.Track
+          className="
         bg-zinc-700
           relative 
           grow 
           rounded-full 
           h-full
         "
-      >
-        <RadixSlider.Range
-          className={`
+        >
+          <RadixSlider.Range
+            className={`
             absolute 
             rounded-full 
             h-full
             ${isTrackActive ? "bg-purple-600" : "bg-white"}
           `}
-        />
-      </RadixSlider.Track>
-      <RadixSlider.Thumb
-        className={`
+          />
+        </RadixSlider.Track>
+        <RadixSlider.Thumb
+          className={`
           h-4 
           w-4 
           bg-white
@@ -68,8 +85,9 @@ const ProgressBar: React.FC<SlideProps> = ({ value = 0, onChange }) => {
           ${isTrackActive ? "opacity-100" : "opacity-0"}
           focus:outline-none
         `}
-      />
-    </RadixSlider.Root>
+        />
+      </RadixSlider.Root>
+    </div>
   );
 };
 

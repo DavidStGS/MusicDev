@@ -109,26 +109,38 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const handleProgressChange = (newValue) => {
     const newCurrentTime = newValue * sound.duration();
     sound.seek(newCurrentTime);
-    play();
   };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
-      <div className="absolute md:flex w-full mt-11 justify-center">
-        <SongProgress sound={sound} />
+      <div className="absolute md:flex w-full md:mt-11 mt-2.2 justify-center">
+        <div
+          className="
+          hidden
+          md:flex"
+        >
+          <SongProgress sound={sound} />
+        </div>
         <div
           className=" 
           hidden
           md:flex
-          md:mt-1     
+          mt-1
           justify-between 
-          items-center     
-          w-4/12
-          mx-1
+          items-center
+          w-full
+          md:w-4/12
+          md:mx-1
           "
         >
           <ProgressBar value={progress} onChange={handleProgressChange} />
         </div>
-        <TimeSet sound={sound} />
+        <div
+          className="
+          hidden
+          md:flex"
+        >
+          <TimeSet sound={sound} />
+        </div>
       </div>
       <div className="flex w-full justify-start">
         <div className="flex items-center gap-x-4">
@@ -219,7 +231,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
         </div>
       </div>
 
-      <div className="hidden md:flex w-full justify-end pr-4">
+      <div className="hidden md:flex w-full justify-end pr-7">
         <div className="flex items-center gap-x-2 w-[120px]">
           <VolumeIcon
             onClick={toggleMute}
