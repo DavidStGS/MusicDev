@@ -26,11 +26,11 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
-    router.refresh();
     if (error) {
       toast.error(error.message);
     } else {
       toast.success("Logout successful");
+      window.location.href = window.location.href;
     }
   };
 
