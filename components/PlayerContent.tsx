@@ -105,7 +105,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
       };
     }
   }, [sound]);
-
+  //Hace que funcione el click en la barra de progreso
   const handleProgressChange = (newValue) => {
     const newCurrentTime = newValue * sound.duration();
     sound.seek(newCurrentTime);
