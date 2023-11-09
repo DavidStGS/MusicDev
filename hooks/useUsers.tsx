@@ -6,7 +6,7 @@ import {
 } from "@supabase/auth-helpers-react";
 
 import { UserDetails } from "@/types";
-
+// fetch user details from supabase
 type UserContextType = {
   accessToken: string | null;
   user: User | null;
