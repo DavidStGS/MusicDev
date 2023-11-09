@@ -3,6 +3,7 @@ import { FaPlay } from "react-icons/fa";
 const PlayButton = () => {
   return (
     <button
+      aria-label="Play"
       className="
       transition 
       opacity-0 

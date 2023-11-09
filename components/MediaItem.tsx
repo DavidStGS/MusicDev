@@ -47,7 +47,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
           fill
           sizes="100%"
           src={imageUrl || ""}
-          alt=""
+          alt="Image"
           className="object-cover"
         ></Image>
       </div>

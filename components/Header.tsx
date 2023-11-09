@@ -66,6 +66,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         "
           >
             <button
+              aria-label="Back"
               onClick={() => router.back()}
               className="
             rounded-full
@@ -81,6 +82,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
               <RxCaretLeft className="text-white" size={35}></RxCaretLeft>
             </button>
             <button
+              aria-label="Forward"
               onClick={() => router.forward()}
               className="
             rounded-full
@@ -98,6 +100,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           </div>
           <div className="flex md:hidden gap-x-2 items-center">
             <button
+              aria-label="Home"
               onClick={() => router.push("/")}
               className="rounded-full bg-black p-2 items-center hover:opacity-75 hover:scale-105
               transition"
@@ -105,6 +108,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
               <HiHome className="text-white" size={23}></HiHome>
             </button>
             <button
+              aria-label="Search"
               onClick={() => router.push("/search")}
               className="rounded-full bg-black p-2 items-center hover:opacity-75 hover:scale-105
               transition"
@@ -143,7 +147,8 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                   Logout
                 </Button>
                 <Button
-                  onClick={() => router.push("/account")}
+                  aria-label="Account"
+                  onClick={() => router.push("/")}
                   className="
                   border-transparent
                   bg-[#0a0a0a]

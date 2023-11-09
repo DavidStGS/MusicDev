@@ -47,7 +47,7 @@ const Sidebar = ({ children, songs }: SidebarProps) => {
         flex 
         h-full
         `,
-        player.activedId && "h-[calc(100%-80px)]"
+        player.activedId && "h-[calc(100%-80px)] transition-all"
       )}
     >
       <div
