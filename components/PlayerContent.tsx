@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
+import { MdLoop, MdClose } from "react-icons/md";
 
 import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
@@ -12,7 +13,6 @@ import usePlayer from "@/hooks/usePlayer";
 import MediaItem from "./MediaItem";
 import Slider from "./Slider";
 import ProgressBar from "./ProgressBar";
-import { set } from "react-hook-form";
 import SongProgress from "./TimeProgress";
 import TimeSet from "./TimeSet";
 
@@ -26,9 +26,6 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const [volume, setVolume] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
 
@@ -64,7 +61,6 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
 
   const [play, { pause, sound }] = useSound(songUrl, {
     volume: volume,
-    isPlaying: isPlaying,
     onplay: () => setIsPlaying(true),
     onend: () => {
       setIsPlaying(false);
@@ -110,26 +106,10 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     }
   }, [sound]);
 
-  useEffect(() => {
-    if (sound) {
-      // Actualiza currentTime cada segundo
-      const interval = setInterval(() => {
-        setCurrentTime(sound.seek());
-      });
-
-      // Establece la duración de la canción
-      setDuration(sound.duration());
-
-      // Limpia el intervalo cuando el componente se desmonta o sound cambia
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [sound]);
-
   const handleProgressChange = (newValue) => {
-    const newCurrentTime = newValue * duration;
+    const newCurrentTime = newValue * sound.duration();
     sound.seek(newCurrentTime);
+    play();
   };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
