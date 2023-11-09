@@ -12,6 +12,9 @@ import usePlayer from "@/hooks/usePlayer";
 import MediaItem from "./MediaItem";
 import Slider from "./Slider";
 import ProgressBar from "./ProgressBar";
+import { set } from "react-hook-form";
+import SongProgress from "./TimeProgress";
+import TimeSet from "./TimeSet";
 
 interface PlayerContentProps {
   song: Song;
@@ -23,6 +26,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const [volume, setVolume] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
@@ -41,12 +46,6 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
 
     player.setId(nextSong);
   };
-
-  function handleProgressChange(newValue) {
-    if (sound) {
-      sound.seek(newValue * sound.duration());
-    }
-  }
 
   const onPlayPrevious = () => {
     if (player.ids.length === 0) {
@@ -111,22 +110,45 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     }
   }, [sound]);
 
+  useEffect(() => {
+    if (sound) {
+      // Actualiza currentTime cada segundo
+      const interval = setInterval(() => {
+        setCurrentTime(sound.seek());
+      });
+
+      // Establece la duración de la canción
+      setDuration(sound.duration());
+
+      // Limpia el intervalo cuando el componente se desmonta o sound cambia
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [sound]);
+
+  const handleProgressChange = (newValue) => {
+    const newCurrentTime = newValue * duration;
+    sound.seek(newCurrentTime);
+  };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
-      <div className="absolute md:flex w-full mt-12 justify-center">
+      <div className="absolute md:flex w-full mt-11 justify-center">
+        <SongProgress sound={sound} />
         <div
-          className="   
+          className=" 
           hidden
           md:flex
           md:mt-1     
           justify-between 
           items-center     
-          w-2/5
-          mx-5
+          w-4/12
+          mx-1
           "
         >
           <ProgressBar value={progress} onChange={handleProgressChange} />
         </div>
+        <TimeSet sound={sound} />
       </div>
       <div className="flex w-full justify-start">
         <div className="flex items-center gap-x-4">
@@ -183,6 +205,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
               cursor-pointer 
               hover:text-white 
               transition
+              
             "
           />
         </div>

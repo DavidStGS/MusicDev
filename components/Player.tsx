@@ -21,7 +21,7 @@ const Player = () => {
         className="
         bg-zinc-950
         w-full
-        h-[75px] 
+        h-[80px] 
         px-1
       "
       >
