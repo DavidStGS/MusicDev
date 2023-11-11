@@ -1,11 +1,10 @@
 "use client";
 
 import useSound from "use-sound";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
-import { MdLoop, MdClose } from "react-icons/md";
 
 import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
@@ -15,6 +14,8 @@ import Slider from "./Slider";
 import ProgressBar from "./ProgressBar";
 import SongProgress from "./TimeProgress";
 import TimeSet from "./TimeSet";
+import AleatoryButton from "./AleatoryButton";
+import LoopButton from "./LoopButton";
 
 interface PlayerContentProps {
   song: Song;
@@ -105,6 +106,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
       };
     }
   }, [sound]);
+
   //Hace que funcione el click en la barra de progreso
   const handleProgressChange = (newValue) => {
     const newCurrentTime = newValue * sound.duration();
@@ -157,17 +159,29 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             items-center
           "
       >
+        <AiFillStepForward
+          onClick={onPlayNext}
+          size={27}
+          className="
+              mr-3
+              text-neutral-400 
+              cursor-pointer 
+              hover:text-white 
+              transition
+            "
+        />
         <div
           onClick={handlePlay}
           className="
-              h-10
-              w-10
+              h-9
+              w-9
               flex 
               items-center 
               justify-center 
               rounded-full 
               bg-white 
               p-1 
+              mr-1
               cursor-pointer
             "
         >
@@ -188,6 +202,9 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             gap-x-5
           "
       >
+        <div className="">
+          <AleatoryButton />
+        </div>
         <div className="mt-1">
           <AiFillStepBackward
             onClick={onPlayPrevious}
@@ -229,8 +246,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             "
           />
         </div>
+        <LoopButton />
       </div>
-
       <div className="hidden md:flex w-full justify-end pr-7">
         <div className="flex items-center gap-x-2 w-[120px]">
           <VolumeIcon
