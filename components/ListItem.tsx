@@ -37,13 +37,12 @@ const ListItem: React.FC<ListItemProps> = ({ img, name, href }) => {
             min-w-[64px]"
       >
         <Image
-          priority
-          fetchPriority="high"
+          loading="eager"
           decoding="async"
           quality={75}
           className="objet-cover"
           fill
-          sizes="100%"
+          sizes="100px"
           src={img}
           alt="Image"
         />

@@ -50,11 +50,14 @@ const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
         style={{ transition: "box-shadow 0.1s" }} // Agregar transición de la sombra
       >
         <Image
+          loading="eager"
+          quality={50}
+          priority
+          fill
+          sizes="200px"
           className="object-cover	border
           border-none"
           src={imagePath || ""}
-          fill
-          sizes="100%"
           alt="Image"
         />
       </div>

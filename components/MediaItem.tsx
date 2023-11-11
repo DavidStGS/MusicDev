@@ -40,10 +40,11 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
       "
       >
         <Image
-          priority
+          loading="lazy"
+          decoding="async"
           quality={75}
           fill
-          sizes="100%"
+          sizes="100px"
           src={imageUrl || ""}
           alt="Image"
           className="object-cover"
