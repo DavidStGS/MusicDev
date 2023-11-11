@@ -40,6 +40,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
       "
       >
         <Image
+          loading="lazy"
           priority
           fetchPriority="high"
           quality={75}
