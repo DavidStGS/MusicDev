@@ -22,7 +22,7 @@ class AdCodeWithoutRouter extends React.Component {
       <div className="container mx-auto text-center" aria-hidden={true}>
         <ins
           className="adsbygoogle"
-          style={{ display: 'block', width: '100%' }}
+          style={{ display: 'block'}}
           data-ad-client="ca-pub-8563047377957074"
           data-ad-slot="2689755862"
           data-ad-format="auto"
