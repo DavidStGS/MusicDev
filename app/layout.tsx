@@ -8,6 +8,7 @@ import ModalProvider from "@/providers/ModalProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import getSongsByUserId from "@/actions/getSongsByUserID";
 import Player from "@/components/Player";
+import { useEffect } from "react";
 const font = Figtree({ subsets: ["latin"] });
 //Acá esta el manifest.json que se usa para la instalación de la app en el celular y el favicon.ico
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
 };
+declare const window: any;
 export const revalidate = 0;
 export default async function RootLayout({
   children,
@@ -25,7 +27,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const userSongs = await getSongsByUserId();
-
+  useEffect(() => {
+    var ads = document.getElementsByClassName("adsbygoogle").length;
+    for (var i = 0; i < ads; i++) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
+    }
+  }, []);
   return (
     <html lang="en">
       <head>
@@ -44,6 +53,14 @@ export default async function RootLayout({
             <Player />
           </UserProvider>
         </SupabaseProvider>
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-8563047377957074"
+          data-ad-slot="2356575768"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
       </body>
     </html>
   );
