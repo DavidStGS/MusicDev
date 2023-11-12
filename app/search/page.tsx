@@ -32,20 +32,17 @@ const Search = async ({ searchParams }: SearchProps) => {
       </Header>
       <SearchSongs songs={songs} />
       <div>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8563047377957074"
-          crossOrigin="anonymous"
-        ></script>
         <ins
           className="adsbygoogle"
           style={{ display: "block" }}
           data-ad-client="ca-pub-8563047377957074"
-          data-ad-slot="2356575768"
+          data-ad-slot="3706188591"
           data-ad-format="auto"
           data-full-width-responsive="true"
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          dangerouslySetInnerHTML={{
+            __html: "(adsbygoogle = window.adsbygoogle || []).push({})",
+          }}
+        />
       </div>
     </div>
   );

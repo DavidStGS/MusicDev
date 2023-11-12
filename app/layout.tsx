@@ -29,13 +29,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8563047377957074"
-          crossOrigin="anonymous"
-        ></script>
-      </head>
       <body className={font.className}>
         <ToasterProvider />
         <SupabaseProvider>
@@ -45,20 +38,6 @@ export default async function RootLayout({
             <Player />
           </UserProvider>
         </SupabaseProvider>
-        <div className="col-md-8">
-          <h3 className="pb-4 mb-4 fst-italic border-bottom">Adsense ads</h3>
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-8563047377957074"
-            data-ad-slot="3706188591"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-            dangerouslySetInnerHTML={{
-              __html: "(adsbygoogle = window.adsbygoogle || []).push({})",
-            }}
-          />
-        </div>
       </body>
     </html>
   );
