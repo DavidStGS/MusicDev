@@ -1,6 +1,7 @@
 import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
 import PageContent from "./component/PageContent";
+import AdCode from "@/components/AdCode";
 
 export const revalidate = 0;
 export default async function Home() {
@@ -60,6 +61,7 @@ export default async function Home() {
           <div>
             <PageContent songs={songs} />
           </div>
+          <AdCode />
         </div>
       </div>
     </div>
