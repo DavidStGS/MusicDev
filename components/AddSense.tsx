@@ -1,10 +1,17 @@
-"use client";
 import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
 
 const AdSense = ({ adSlot }) => {
   useEffect(() => {
-    if (window) {
+    try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error(err);
     }
   }, []);
 
