@@ -2,7 +2,7 @@ import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
 // import ListItem from "@/components/ListItem";
 import PageContent from "./component/PageContent";
-import AdSense from "@/components/AddSense";
+// import AdSense from "@/components/AddSense";
 
 export const revalidate = 0;
 export default async function Home() {
@@ -61,12 +61,12 @@ export default async function Home() {
           </div>
           <div>
             <PageContent songs={songs} />
-            <script
+            {/* <script
               async
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8563047377957074"
               crossOrigin="anonymous"
             ></script>
-            <AdSense adSlot="2356575768" />
+            <AdSense adSlot="2356575768" /> */}
           </div>
         </div>
       </div>

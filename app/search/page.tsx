@@ -2,7 +2,7 @@ import getSongsByTitle from "@/actions/getSongsByTitle";
 import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 import SearchSongs from "./component/SearchSongs";
-import AdSense from "@/components/AddSense";
+// import AdSense from "@/components/AddSense";
 
 export const revalidate = 0;
 
@@ -32,12 +32,12 @@ const Search = async ({ searchParams }: SearchProps) => {
         </div>
       </Header>
       <SearchSongs songs={songs} />
-      <script
+      {/* <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8563047377957074"
         crossOrigin="anonymous"
       ></script>
-      <AdSense adSlot="2356575768" />
+      <AdSense adSlot="2356575768" /> */}
     </div>
   );
 };
