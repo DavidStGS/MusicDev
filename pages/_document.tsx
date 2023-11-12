@@ -6,9 +6,9 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <script
-            data-ad-client="ca-pub-8563047377957074"
             async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8563047377957074"
+            crossOrigin="anonymous"
           ></script>
         </Head>
         <body>
