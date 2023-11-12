@@ -31,17 +31,6 @@ const Search = async ({ searchParams }: SearchProps) => {
         </div>
       </Header>
       <SearchSongs songs={songs} />
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-8563047377957074"
-        data-ad-slot="3706188591"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-        dangerouslySetInnerHTML={{
-          __html: "(adsbygoogle = window.adsbygoogle || []).push({})",
-        }}
-      />
     </div>
   );
 };
