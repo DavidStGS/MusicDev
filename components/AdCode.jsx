@@ -19,15 +19,6 @@ class AdCodeWithoutRouter extends React.Component {
 
   render() {
     return (
-      <>
-      <head>
-        <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
-        crossOrigin="anonymous"
-        strategy="lazyOnload"
-        />
-      </head>
       <div className="container mx-auto text-center" aria-hidden={true}>
         <ins
           className="adsbygoogle"
@@ -39,7 +30,6 @@ class AdCodeWithoutRouter extends React.Component {
         ></ins>
         <script dangerouslySetInnerHTML={{ __html: '(window.adsbygoogle = window.adsbygoogle || []).push({});' }}></script>
       </div>
-      </>
     );
   }
 }

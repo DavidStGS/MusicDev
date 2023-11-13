@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 import SearchSongs from "./component/SearchSongs";
 import AdCode from "@/components/AdCode";
-import Script from "next/script";
 
 export const revalidate = 0;
 
@@ -33,9 +32,7 @@ const Search = async ({ searchParams }: SearchProps) => {
         </div>
       </Header>
       <SearchSongs songs={songs} />
-      <div>
-        <AdCode />
-      </div>
+      <div></div>
     </div>
   );
 };

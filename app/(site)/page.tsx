@@ -2,7 +2,6 @@ import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
 import PageContent from "./component/PageContent";
 import AdCode from "@/components/AdCode";
-import Script from "next/script";
 
 export const revalidate = 0;
 export default async function Home() {
