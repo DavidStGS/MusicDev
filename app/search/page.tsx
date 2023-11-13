@@ -2,7 +2,6 @@ import getSongsByTitle from "@/actions/getSongsByTitle";
 import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 import SearchSongs from "./component/SearchSongs";
-import AdCode from "@/components/AdCode";
 
 export const revalidate = 0;
 
@@ -32,7 +31,6 @@ const Search = async ({ searchParams }: SearchProps) => {
         </div>
       </Header>
       <SearchSongs songs={songs} />
-      <div></div>
     </div>
   );
 };
