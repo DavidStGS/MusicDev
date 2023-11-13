@@ -31,14 +31,14 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
+      <head>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8563047377957074"
           crossOrigin="anonymous"
           strategy="lazyOnload"
         />
-      </Head>
+      </head>
       <body className={font.className}>
         <ToasterProvider />
         <SupabaseProvider>
