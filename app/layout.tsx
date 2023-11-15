@@ -8,8 +8,6 @@ import ModalProvider from "@/providers/ModalProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import getSongsByUserId from "@/actions/getSongsByUserID";
 import Player from "@/components/Player";
-import Head from "next/head";
-import Script from "next/script";
 
 const font = Figtree({ subsets: ["latin"] });
 //Acá esta el manifest.json que se usa para la instalación de la app en el celular y el favicon.ico
@@ -28,7 +26,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const userSongs = await getSongsByUserId();
-
   return (
     <html lang="en">
       <body className={font.className}>

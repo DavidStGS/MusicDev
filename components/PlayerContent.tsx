@@ -16,6 +16,7 @@ import SongProgress from "./TimeProgress";
 import TimeSet from "./TimeSet";
 import AleatoryButton from "./AleatoryButton";
 import LoopButton from "./LoopButton";
+import LikeButton from "./LikeButton";
 
 interface PlayerContentProps {
   song: Song;
@@ -147,6 +148,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
       <div className="flex w-full justify-start">
         <div className="flex items-center gap-x-4">
           <MediaItem data={song} />
+          <LikeButton songId={song.id} />
         </div>
       </div>
       <div
