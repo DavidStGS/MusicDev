@@ -3,6 +3,7 @@
 import MediaItem from "@/components/MediaItem";
 import { Song } from "@/types";
 import useOnPlay from "@/hooks/useOnPLay";
+import LikeButton from "@/components/LikeButton";
 
 interface SearchSongsProps {
   songs: Song[];
@@ -48,6 +49,7 @@ const SearchSongs: React.FC<SearchSongsProps> = ({ songs }) => {
           <div className="flex-1">
             <MediaItem onClick={(id: string) => onPlay(id)} data={song} />
           </div>
+          <LikeButton songId={song.id} />
         </div>
       ))}
     </div>

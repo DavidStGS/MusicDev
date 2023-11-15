@@ -1,6 +1,7 @@
 import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header";
 import PageContent from "./component/PageContent";
+import ListItem from "@/components/ListItem";
 
 export const revalidate = 0;
 export default async function Home() {
@@ -36,6 +37,7 @@ export default async function Home() {
             </h1>
             <div
               className="
+              mt-4
           grid
           grid-cols-1
           sm:grid-cols-2
@@ -45,11 +47,11 @@ export default async function Home() {
           
           "
             >
-              {/* <ListItem
-              img="/images/liked.png"
-              name="Liked Songs"
-              href="Liked"
-            ></ListItem> */}
+              <ListItem
+                img="/images/liked.png"
+                name="Liked Songs"
+                href="Liked"
+              ></ListItem>
             </div>
           </div>
         </Header>
